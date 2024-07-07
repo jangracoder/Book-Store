@@ -3,13 +3,13 @@ const app =express();
 require("dotenv").config();
 require("./connect/config")
 
-app.get("/",(req,res)=>{
-    res.send("hi");
-})
+const user=require("./routes/user");
+
+app.use(express.json());
+app.use("/ap1/v1",user);
 
 
 
-app.listen(1000,()=>{
+app.listen(process.env.PORT,()=>{
     console.log(`Server started at port ${process.env.PORT}`);
 })
-
